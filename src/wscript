@@ -1,0 +1,16 @@
+def build(bld):
+    def make_test(name):
+        bld.program(
+            features = 'gtest',
+            source = name + '.cpp',
+            target = name,
+            use = 'PFICOMMON',
+        )
+
+    tests = [
+        'decay_counter_test',
+        'lossy_counter_test',
+    ]
+
+    for t in tests:
+        make_test(t)
